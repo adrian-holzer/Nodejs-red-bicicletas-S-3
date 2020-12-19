@@ -11,13 +11,19 @@ var bicicletasRouterAPI = require('./routes/api/bicicletas_api_routes');
 
 var app = express();
 
-/* var mongoose = require('mongoose');
+
+// Mongoose connection
+var mongoose = require('mongoose');
 var mongoDB = 'mongodb://localhost/red_bicicletas'
 
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error')); */
+db.on('error', console.error.bind(console, 'MongoDB connection error: '));
+
+
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
