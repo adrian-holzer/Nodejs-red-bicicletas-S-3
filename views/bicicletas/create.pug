@@ -1,0 +1,29 @@
+
+extends ../layout
+
+block content
+    .m-5
+    a.mt-5(href="/bicicletas") Volver
+    br
+    br
+    
+    form(action="/bicicletas/create" method='post')
+        h1.text-center Crear Bicicleta
+
+        .form-group
+            label(for='id') ID:
+            input#id.form-control(type='text' name='id'  placeholder='ID')
+        .form-group
+            label(for='color') Color:
+            input#color.form-control(type='text' name="color" placeholder='Color')
+        .form-group
+            label(for='modelo') Modelo:
+            input#modelo.form-control(type='text' name="modelo" placeholder='Modelo')
+        .form-group
+            label(for='lat') Latitud:
+            input#lat.form-control(type='text' name="lat" placeholder='Latitud')
+        .form-group
+            label(for='lng') Longitud:
+            input#lng.form-control(type='text' name="lng" placeholder='Longitud')
+        
+        input.mt-3.btn.btn-primary(type='submit' value="OK") 
