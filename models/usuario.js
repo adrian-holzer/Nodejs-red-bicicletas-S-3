@@ -3,7 +3,7 @@ var Reserva = require('./reserva');
 var Schema = mongoose.Schema;
 
 var usuarioSchema = new Schema({
-    nombre: String,
+    nombre: String
 });
 
 usuarioSchema.methods.reservar = function(biciId, desde, hasta, cb) {

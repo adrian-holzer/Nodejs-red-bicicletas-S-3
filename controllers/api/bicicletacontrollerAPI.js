@@ -5,9 +5,14 @@ exports.bicicleta_Api_list = function(req, res) {
 
 
 
-    res.status(200).json({
-        bicis: Bicicleta.allBicis
-    })
+    Bicicleta.allBicis(function(err, bicis) {
+
+        res.status(200).json({
+            bicis: bicis
+        });
+    });
+
+
 
 }
 

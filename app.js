@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var bicicletasRouter = require('./routes/bicicletas');
 var bicicletasRouterAPI = require('./routes/api/bicicletas_api_routes');
 var usuariosRouterAPI = require('./routes/api/usuarios_api_routes');
+var reservasRouterAPI = require('./routes/api/reservas_api_routes');
 
 var app = express();
 
@@ -40,8 +41,11 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/bicicletas', bicicletasRouter);
 
+
+
 app.use('/api/bicicletas', bicicletasRouterAPI);
 app.use('/api/usuarios', usuariosRouterAPI);
+app.use('/api/reservas', reservasRouterAPI);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
