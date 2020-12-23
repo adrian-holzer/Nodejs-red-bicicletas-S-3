@@ -3,10 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var authRouter = require('./routes/api/auth');
 const Usuario = require('./models/usuario');
 const Token = require('./models/token');
-
+const jwt = require('jsonwebtoken');
 var indexRouter = require('./routes/index');
 var usuariosRouter = require('./routes/usuarios');
 var bicicletasRouter = require('./routes/bicicletas');
@@ -68,9 +68,10 @@ app.use('/token', tokenRouter);
 
 
 
-app.use('/api/bicicletas', bicicletasRouterAPI);
+app.use('/api/bicicletas', validarUsuario, bicicletasRouterAPI);
 app.use('/api/usuarios', usuariosRouterAPI);
 app.use('/api/reservas', reservasRouterAPI);
+app.use('/api/auth', authRouter);
 
 
 app.get('/login', function(req, res) {
@@ -105,7 +106,20 @@ function loggedIn(req, res, next) {
 
 
 
+function validarUsuario(req, res, next) {
+    jwt.verify(req.headers['x-access-token'], req.app.get('secretKey'), function(err, decoded) {
+        if (err) {
+            res.json({ status: 'Error', message: err.message, data: null });
+        } else {
+            req.body.userId = decoded.id;
+            console.log(`jwt verify: ${decoded}`);
+            next();
+        }
+    });
+}
 
+
+app.set('secretKey', 'jwt_pwd_!!223344');
 
 app.get('/forgotPassword', function(req, res) {
     res.render('session/forgotPassword')
