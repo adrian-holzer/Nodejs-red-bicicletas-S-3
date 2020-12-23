@@ -10514,3 +10514,8 @@ body {
 .footer {
     padding: 5rem 0;
 }
+
+body {
+    padding: 50px;
+    padding-top: 5rem;
+}

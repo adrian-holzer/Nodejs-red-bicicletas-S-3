@@ -51,9 +51,10 @@ bicicletaSchema.statics.findByCode = function(aCode, cb) {
 };
 
 
-bicicletaSchema.statics.removeByCode = function(aCode, cb) {
+bicicletaSchema.statics.removeById = function(id, cb) {
 
-    return this.deleteOne({ code: aCode }, cb);
+
+    return this.deleteOne({ _id: id }, cb);
 
 };
 
