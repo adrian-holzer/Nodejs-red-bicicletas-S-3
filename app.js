@@ -62,7 +62,7 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/usuarios', usuariosRouter);
+/* app.use('/usuarios', usuariosRouter);
 app.use('/bicicletas', loggedIn, bicicletasRouter);
 app.use('/token', tokenRouter);
 
@@ -71,7 +71,7 @@ app.use('/token', tokenRouter);
 app.use('/api/bicicletas', validarUsuario, bicicletasRouterAPI);
 app.use('/api/usuarios', usuariosRouterAPI);
 app.use('/api/reservas', reservasRouterAPI);
-app.use('/api/auth', authRouter);
+app.use('/api/auth', authRouter); */
 
 
 app.get('/login', function(req, res) {
